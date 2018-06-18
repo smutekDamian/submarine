@@ -34,5 +34,14 @@ public class MovementScript : MonoBehaviour
                 transform.Rotate(-(Time.deltaTime * 5 * 50), 0, 0);
             }
         }
+
+        if (Input.GetKey("w"))
+        {
+            transform.position += new Vector3(0, 1, 0);
+        }
+        if (Input.GetKey("s"))
+        {
+            transform.position += new Vector3(0, -1, 0);
+        }
     }
 }
