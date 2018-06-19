@@ -55,6 +55,11 @@ public class MovementScript : MonoBehaviour
             }
         }
 
-        transform.position += new Vector3(0, (float)((ballast - 50) * 0.001), 0);
+        var dy = (float) ((ballast - 50) * 0.001);
+        if (transform.position.y + dy > 150)
+        {
+            dy = 150 - transform.position.y;
+        }
+        transform.position += new Vector3(0, dy, 0);
     }
 }
