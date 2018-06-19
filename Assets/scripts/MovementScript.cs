@@ -19,22 +19,22 @@ public class MovementScript : MonoBehaviour
             transform.position -= transform.forward * Time.deltaTime * 30;
             if (Input.GetKey("right"))
             {
-                transform.Rotate(0, Time.deltaTime * 5 * 50, 0);
+                transform.Rotate(0, Time.deltaTime  * 15, 0);
             }
 
             if (Input.GetKey("left"))
             {
-                transform.Rotate(0, -(Time.deltaTime * 5 * 50), 0);
+                transform.Rotate(0, -(Time.deltaTime  * 15), 0);
             }
 
             if (Input.GetKey("up"))
             {
-                transform.Rotate(Time.deltaTime * 5 * 50, 0, 0);
+                transform.Rotate(Time.deltaTime * 15, 0, 0);
             }
 
             if (Input.GetKey("down"))
             {
-                transform.Rotate(-(Time.deltaTime * 5 * 50), 0, 0);
+                transform.Rotate(-(Time.deltaTime * 15), 0, 0);
             }
         }
 
