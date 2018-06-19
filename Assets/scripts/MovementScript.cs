@@ -14,26 +14,6 @@ public class MovementScript : MonoBehaviour
     public void Update()
     {
 
-        if (Input.GetKey("up"))
-        {
-            if (ballast < 100)
-            {
-                ballast += 1;
-                ballastText.text = ballast + " %";
-            }
-        }
-
-        if (Input.GetKey("down"))
-        {
-            if (ballast > 0)
-            {
-                ballast -= 1;
-                ballastText.text = ballast + " %";
-            }
-        }
-
-        transform.position += new Vector3(0, (float) ((ballast - 50) * 0.001), 0);
-
         if (Input.GetKey("space"))
         {
             transform.position -= transform.forward * Time.deltaTime * 30;
@@ -46,15 +26,35 @@ public class MovementScript : MonoBehaviour
             {
                 transform.Rotate(0, -(Time.deltaTime * 5 * 50), 0);
             }
+
+            if (Input.GetKey("up"))
+            {
+                transform.Rotate(Time.deltaTime * 5 * 50, 0, 0);
+            }
+
+            if (Input.GetKey("down"))
+            {
+                transform.Rotate(-(Time.deltaTime * 5 * 50), 0, 0);
+            }
         }
 
         if (Input.GetKey("w"))
         {
-            transform.position += new Vector3(0, 1, 0);
+            if (ballast < 100)
+            {
+                ballast += 1;
+                ballastText.text = ballast + " %";
+            }
         }
         if (Input.GetKey("s"))
         {
-            transform.position += new Vector3(0, -1, 0);
+            if (ballast > 0)
+            {
+                ballast -= 1;
+                ballastText.text = ballast + " %";
+            }
         }
+
+        transform.position += new Vector3(0, (float)((ballast - 50) * 0.001), 0);
     }
 }
