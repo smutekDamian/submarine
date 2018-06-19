@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class MovementScript : MonoBehaviour
 {
     public Rigidbody submarine;
+    public int ballast = 50;
+    public Text ballastText;
 
     public void Start()
     {
@@ -10,6 +13,26 @@ public class MovementScript : MonoBehaviour
 
     public void Update()
     {
+
+        if (Input.GetKey("up"))
+        {
+            if (ballast < 100)
+            {
+                ballast += 1;
+                ballastText.text = ballast + " %";
+            }
+        }
+
+        if (Input.GetKey("down"))
+        {
+            if (ballast > 0)
+            {
+                ballast -= 1;
+                ballastText.text = ballast + " %";
+            }
+        }
+
+        transform.position += new Vector3(0, (float) ((ballast - 50) * 0.001), 0);
 
         if (Input.GetKey("space"))
         {
@@ -22,16 +45,6 @@ public class MovementScript : MonoBehaviour
             if (Input.GetKey("left"))
             {
                 transform.Rotate(0, -(Time.deltaTime * 5 * 50), 0);
-            }
-
-            if (Input.GetKey("up"))
-            {
-                transform.Rotate(Time.deltaTime * 5 * 50, 0, 0);
-            }
-
-            if (Input.GetKey("down"))
-            {
-                transform.Rotate(-(Time.deltaTime * 5 * 50), 0, 0);
             }
         }
 
